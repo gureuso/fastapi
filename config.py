@@ -29,7 +29,7 @@ class JsonConfig:
 class Config:
     ROOT_DIR = ROOT_DIR
     STATIC_DIR = '{0}/static'.format(ROOT_DIR)
-    TEMPLATES_DIR = '{0}/templates'.format(ROOT_DIR)
+    TEMPLATES_DIR = '{0}/template'.format(ROOT_DIR)
     ERROR_CODE = {
         40000: '입력 값이 잘못되었습니다.',
         40300: '권한이 없습니다.',

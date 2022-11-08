@@ -141,3 +141,4 @@ cython_debug/
 .idea/
 config.json
 .DS_Store
+fastapi.db
