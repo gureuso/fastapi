@@ -7,6 +7,7 @@ from fastapi.templating import Jinja2Templates
 from starlette.responses import FileResponse
 
 from apps.common.response import PermissionDeniedException, error, NotFoundException
+from apps.database import database
 from apps.router.v1.user.router import router as v1_user_router
 from config import Config
 
@@ -42,3 +43,13 @@ async def ping():
 @app.get('/favicon.ico', include_in_schema=False)
 async def favicon():
     return FileResponse(f'{Config.STATIC_DIR}/favicon.ico')
+
+
+@app.on_event('startup')
+async def startup():
+    await database.connect()
+
+
+@app.on_event('shutdown')
+async def shutdown():
+    await database.disconnect()

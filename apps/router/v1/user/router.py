@@ -1,18 +1,18 @@
 from fastapi import APIRouter
 
-from apps.database.session import SQLITE
+from apps.resp import UserListResp, UserResp
+from apps.service.user import UserService
 
 router = APIRouter(prefix='/v1/users')
 
 
-@router.get('')
+@router.get('', response_model=UserListResp)
 async def get_users():
-    res = []
-    users = await SQLITE.find('''
-        SELECT id, email FROM user;
-    ''')
-    for user in users:
-        id = user[0]
-        email = user[1]
-        res.append({'id': id, 'email': email})
-    return {'users': res}
+    users = await UserService.find_all()
+    return {'users': users}
+
+
+@router.get('/{user_id}', response_model=UserResp)
+async def get_user(user_id: int):
+    user = await UserService.find_one_by_id(user_id)
+    return {'user': user}
