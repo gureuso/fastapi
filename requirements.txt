@@ -1,0 +1,4 @@
+pytest-asyncio
+pytest
+fastapi[all]
+databases[aiosqlite]
