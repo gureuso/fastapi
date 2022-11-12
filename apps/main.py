@@ -5,17 +5,23 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.responses import FileResponse
+from starlette.exceptions import HTTPException
 
 from apps.common.response import PermissionDeniedException, error, NotFoundException
 from apps.database import database
 from apps.router.v1.user.router import router as v1_user_router
 from config import Config
 
-app = FastAPI()
+app = FastAPI(docs_url='/asdf3', redoc_url='/asdf2', openapi_url='/asdf1')
 app.include_router(v1_user_router)
 app.mount('/static', StaticFiles(directory=Config.STATIC_DIR), name='static')
 
 templates = Jinja2Templates(directory=Config.TEMPLATES_DIR)
+
+
+@app.exception_handler(HTTPException)
+async def not_found_exception_handler(request: Request, exc: HTTPException):
+    return JSONResponse(status_code=exc.status_code, content=error(exc.status_code * 100))
 
 
 @app.exception_handler(PermissionDeniedException)
