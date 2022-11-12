@@ -60,6 +60,12 @@ class Config:
         return False
 
     @staticmethod
+    def is_test():
+        if Config.APP_MODE == Config.APP_MODE_TESTING:
+            return True
+        return False
+
+    @staticmethod
     def database_url(dialect='mysql'):
         if dialect == 'mysqlconnector':
             return '{}://{}:{}@{}/{}?charset=utf8mb4'.format('mysql+mysqlconnector', Config.DB_USER_NAME, Config.DB_USER_PASSWD,

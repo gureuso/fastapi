@@ -1,4 +1,5 @@
-import random
+import uuid
+
 import pytest
 
 from apps.database import UserEntity
@@ -18,7 +19,7 @@ class TestUserService:
 
     @pytest.mark.asyncio
     async def test_create(self):
-        user_entity = UserEntity(email=f'{random.randint(1000, 2000)}@gmail.com')
+        user_entity = UserEntity(email=f'{uuid.uuid4()}@gmail.com')
         create_user = await UserService.create(user_entity)
         find_user = await UserService.find_one_by_id(user_id=create_user.id)
         assert create_user.id == find_user.id
