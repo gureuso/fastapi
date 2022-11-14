@@ -2,7 +2,7 @@ import uuid
 
 import pytest
 
-from app.database import UserEntity
+from app.database.sqlite import UserEntity
 from app.service.user import UserService
 
 
