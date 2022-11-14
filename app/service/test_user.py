@@ -2,8 +2,8 @@ import uuid
 
 import pytest
 
-from apps.database import UserEntity
-from apps.service.user import UserService
+from app.database import UserEntity
+from app.service.user import UserService
 
 
 class TestUserService:

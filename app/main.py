@@ -7,9 +7,9 @@ from fastapi.templating import Jinja2Templates
 from starlette.responses import FileResponse
 from starlette.exceptions import HTTPException
 
-from apps.common.response import PermissionDeniedException, error, NotFoundException
-from apps.database import database
-from apps.router.v1.user.router import router as v1_user_router
+from app.common.response import PermissionDeniedException, error, NotFoundException
+from app.database import database
+from app.router.v1.user.router import router as v1_user_router
 from config import Config
 
 app = FastAPI(docs_url='/asdf3', redoc_url='/asdf2', openapi_url='/asdf1')

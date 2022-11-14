@@ -1,6 +1,6 @@
 from pydantic.main import BaseModel
 
-from apps.database import UserEntity
+from app.database import UserEntity
 
 
 class UserListResp(BaseModel):

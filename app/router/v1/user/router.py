@@ -1,9 +1,9 @@
 import random
 from fastapi import APIRouter
 
-from apps.database import UserEntity
-from apps.resp import UserListResp, UserResp
-from apps.service.user import UserService
+from app.database import UserEntity
+from app.resp import UserListResp, UserResp
+from app.service.user import UserService
 
 router = APIRouter(prefix='/v1/users')
 
