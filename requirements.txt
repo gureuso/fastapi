@@ -4,3 +4,4 @@ fastapi[all]
 databases[aiosqlite]
 apscheduler
 redis
+httpx
