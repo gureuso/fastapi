@@ -8,11 +8,12 @@ from starlette.responses import FileResponse
 from starlette.exceptions import HTTPException
 
 from app.common.response import PermissionDeniedException, error, NotFoundException
-from app.database import database
+from app.database.sqlite import database
+from app.common.cron import scheduler
 from app.router.v1.user.router import router as v1_user_router
 from config import Config
 
-app = FastAPI(docs_url='/asdf3', redoc_url='/asdf2', openapi_url='/asdf1')
+app = FastAPI(docs_url='/H9buCGuR', redoc_url='/Ff9Wbe2S', openapi_url='/vOWksi3t')
 app.include_router(v1_user_router)
 app.mount('/static', StaticFiles(directory=Config.STATIC_DIR), name='static')
 
@@ -53,6 +54,7 @@ async def favicon():
 
 @app.on_event('startup')
 async def startup():
+    scheduler.start()
     await database.connect()
 
 

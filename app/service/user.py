@@ -1,4 +1,4 @@
-from app.database import user_table, database, UserEntity
+from app.database.sqlite import user_table, database, UserEntity
 
 
 class UserService:

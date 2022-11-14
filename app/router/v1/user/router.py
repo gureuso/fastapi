@@ -1,7 +1,7 @@
 import random
 from fastapi import APIRouter
 
-from app.database import UserEntity
+from app.database.sqlite import UserEntity
 from app.resp import UserListResp, UserResp
 from app.service.user import UserService
 
