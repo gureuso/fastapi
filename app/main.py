@@ -44,6 +44,7 @@ async def exception_handler(request: Request, exc: Exception):
 @app.get('/')
 @app.get('/ping')
 async def ping():
+    # await Kafka.producer.send('fastapi_topic', json.dumps({'username': 'alex'}).encode('utf-8'))
     return {'ping': 'pong'}
 
 
@@ -56,8 +57,11 @@ async def favicon():
 async def startup():
     scheduler.start()
     await database.connect()
+    # kafka = Kafka()
+    # await kafka.start()
 
 
 @app.on_event('shutdown')
 async def shutdown():
     await database.disconnect()
+    # await Kafka.producer.stop()

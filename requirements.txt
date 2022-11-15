@@ -5,3 +5,4 @@ databases[aiosqlite]
 apscheduler
 redis
 httpx
+aiokafka
