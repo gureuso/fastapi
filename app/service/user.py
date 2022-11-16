@@ -3,7 +3,7 @@ from app.database.sqlite import user_table, database, UserEntity
 
 class UserService:
     @staticmethod
-    async def create(user_entity: UserEntity):
+    async def create(user_entity: UserEntity) -> UserEntity:
         query = user_table.insert().values(email=user_entity.email)
         user_entity.id = await database.execute(query)
         return user_entity

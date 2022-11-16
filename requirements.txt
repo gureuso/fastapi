@@ -6,3 +6,5 @@ apscheduler
 redis
 httpx
 aiokafka
+boto3
+celery
