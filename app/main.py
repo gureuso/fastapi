@@ -21,7 +21,7 @@ templates = Jinja2Templates(directory=Config.TEMPLATES_DIR)
 
 
 @app.exception_handler(HTTPException)
-async def not_found_exception_handler(request: Request, exc: HTTPException):
+async def custom_exception_handler(request: Request, exc: HTTPException):
     return JSONResponse(status_code=exc.status_code, content=error(exc.status_code * 100))
 
 
